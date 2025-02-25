@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(100, 1fr);
+}
+
+.cell {
+  border: 1px solid #ccc;
+  aspect-ratio: 1 / 1;
+}
