@@ -25,3 +25,9 @@ celdas por las que pase el cursor deben seleccionarse.
 Cuando se suelta el mouse, se desactiva la función de arrastre, y todas las celdas por las que pase el cursor ya 
 no se verán modificadas. Tener en cuenta que, de todas formas, debe continuar 
 siendo posible clickear cada celda individualmente.
+
+El proyecto se puede visualizar y probar desde el siguiente link: [squared-sheet-paint]() (corresponde al último commit de la rama `master`).
+
+## Ejecutar localmente
+Es requerido tener instalado **Node.js**  
+- En la carpeta del proyecto abrir una terminal y ejecutar `npm install` y luego `npm run dev`.
