@@ -26,7 +26,7 @@ Cuando se suelta el mouse, se desactiva la función de arrastre, y todas las cel
 no se verán modificadas. Tener en cuenta que, de todas formas, debe continuar 
 siendo posible clickear cada celda individualmente.
 
-El proyecto se puede visualizar y probar desde el siguiente link: [squared-sheet-paint]() (corresponde al último commit de la rama `master`).
+El proyecto se puede visualizar y probar desde el siguiente link: [squared-sheet-paint](https://squared-sheet-paint.netlify.app/) (corresponde al último commit de la rama `master`).
 
 ## Ejecutar localmente
 Es requerido tener instalado **Node.js**  
