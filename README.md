@@ -9,7 +9,7 @@ todas las celdas caben en la ventana.
 Cuando una celda sea clickeada, la misma debe “activarse” cambiando de color. 
 Al volver a clickear la celda, la misma debe desactivarse y removerse el color.
 
-![example1](https://gist.github.com/LauMartinez-Code/5ffbb16fa7a5dbe83991fd63028ed3ba/raw/9864b8c03b2ff99ec18387bb841c3febd67046af/paintExample.png)
+![example1](https://github.com/user-attachments/assets/052afd36-9e1f-4a84-8a60-489980f640d6)
 
 Cuando una celda sea clickeada con el botón derecho del mouse, debería aparecer 
 una ventana emergente donde se pueda elegir un color. Se requiere un 
@@ -22,7 +22,7 @@ derecho del mouse en la posición que se encuentre el cursor.
 - El selector de color desaparece (fade-out) cuando el cursor se desplace fuera 
 del mismo, o cuando un color sea seleccionado.
 
-![example2](https://gist.github.com/LauMartinez-Code/5ffbb16fa7a5dbe83991fd63028ed3ba/raw/9864b8c03b2ff99ec18387bb841c3febd67046af/paintExample2.png)
+![example2](https://github.com/user-attachments/assets/48dc7314-f96d-4b09-aea3-b17c624205d4)
 
 Para facilitar el dibujo de imágenes, debe ser posible hacerlo arrastrando el cursor 
 del mouse. Cuando una celda sea clickeada, se activa la dicha función. Todas las 
