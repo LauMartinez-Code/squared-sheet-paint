@@ -1,16 +1,12 @@
 import "./ContextMenu.css";
 
-const ContextMenu = ({ position, initialColor, setColor, closeMenu }) => {
-    let toggler = false; // Controla el cierre del input[type=color]
+const ContextMenu = ({ isVisible, position, initialColor, setColor, closeMenu }) => {
+    let toggler = false; // Controla el cierre del ContextMenu desde el click en input[type=color]
     let selectedColor = initialColor;
 
-    const handleInputClick = (e) => {
-        if(toggler) {
-            e.target.disabled = true;
-            closeMenu();
-        }
+    const handleInputClick = () => {
+        toggler && handleCloseMenu();
         toggler = !toggler;
-        handleColorChange(e);
     }
 
     const handleColorChange = (e) => {
@@ -18,14 +14,16 @@ const ContextMenu = ({ position, initialColor, setColor, closeMenu }) => {
     };
 
     const handleCloseMenu = () => {
+
         if (selectedColor !== initialColor) {
             setColor(selectedColor);
         }
+        
         closeMenu();
     };
 
     return (
-        <menu className="context-menu"
+        <menu className={`context-menu context-menu--${isVisible ? "fade-in" : "fade-out"}`}
             style={{
                 top: position.y,
                 left: position.x,
@@ -36,8 +34,11 @@ const ContextMenu = ({ position, initialColor, setColor, closeMenu }) => {
             <label htmlFor="colorInput">
                 Pick a color
             </label>
-            <input type="color" id="colorInput" className="context-menu__option" title="Click to pick a color"
+            <input type="color" id="colorInput"
+                className="context-menu__option"
+                title="Click to pick a color"
                 defaultValue="#000000"
+                disabled={!isVisible}
                 onChange={handleColorChange}
                 onClick={handleInputClick}
                 onBlur={handleCloseMenu} />

@@ -8,6 +8,7 @@
     background-color: white;
     border: 2px solid black;
     border-radius: 4px;
+    transition: opacity .3s ease-in-out, display .3s allow-discrete;
 }
 
 .context-menu__option {
@@ -15,4 +16,19 @@
     height: 30px;
     border: none;
     cursor: pointer;
+}
+
+.context-menu--fade-in {
+    opacity: 1;
+    pointer-events: auto;
+
+    @starting-style {
+        opacity: 0;
+    }
+}
+
+.context-menu--fade-out {
+    opacity: 0;
+    display: none;
+    pointer-events: none;
 }

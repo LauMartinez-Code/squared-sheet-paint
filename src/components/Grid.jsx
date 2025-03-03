@@ -45,12 +45,11 @@ const Grid = () => {
                     {cellList}
                 </div>
             </GridColorContext.Provider>
-            {isMenuVisible && 
-                <ContextMenu position={rigthClickPosition}
-                    initialColor={cellColor}
-                    setColor={setCellColor}
-                    closeMenu={() => setIsMenuVisible(false)} />
-            }
+            <ContextMenu isVisible={isMenuVisible}
+                position={rigthClickPosition}
+                initialColor={cellColor}
+                setColor={setCellColor}
+                closeMenu={() => setIsMenuVisible(false)} />
         </>
     );
 };
