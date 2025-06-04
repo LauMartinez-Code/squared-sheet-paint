@@ -1,24 +1,42 @@
+import { useRef, useState } from "react";
 import "./ContextMenu.css";
 
-const ContextMenu = ({ isVisible, position, initialColor, setColor, closeMenu }) => {
-    let toggler = false; // Controla el cierre del ContextMenu desde el click en input[type=color]
-    let selectedColor = initialColor;
+const STATIC_COLORS = [
+    { name: "Red", value: "#FF0000" },
+    { name: "Green", value: "#00FF00" },
+    { name: "Blue", value: "#0000FF" },
+    { name: "Yellow", value: "#FFFF00" },
+    { name: "Magenta", value: "#FF00FF" },
+];
 
-    const handleInputClick = () => {
-        toggler && handleCloseMenu();
-        toggler = !toggler;
+const ContextMenu = ({ isVisible, position, initialColor, setColor, closeMenu }) => {
+    const [selectedColor, setSelectedColor] = useState(initialColor);
+    const inputColorRef = useRef(null);
+    const inputColorToggler = useRef(false); // Controla el cierre del ContextMenu desde el click en input[type=color]
+    const inputColorClassName = `${selectedColor == inputColorRef.current?.value ? "context-menu__option-custom-color--checked" : ""}`;
+
+    const handleInputClick = (e) => {
+        if (inputColorToggler.current) {
+            handleCloseMenu();
+            return;
+        }
+        
+        inputColorToggler.current = true;
+        (selectedColor != inputColorRef.current?.value) && handleColorChange(e);
     }
 
     const handleColorChange = (e) => {
-        selectedColor = e.target.value;
+        setSelectedColor(e.target.value);
+        e.target.type === "radio" && handleCloseMenu();
     };
 
     const handleCloseMenu = () => {
-
+        
         if (selectedColor !== initialColor) {
             setColor(selectedColor);
         }
         
+        inputColorToggler.current = false;
         closeMenu();
     };
 
@@ -30,18 +48,24 @@ const ContextMenu = ({ isVisible, position, initialColor, setColor, closeMenu })
             }}
             onMouseLeave={handleCloseMenu}
             onContextMenu={(e) => e.preventDefault()}>
+
+            {STATIC_COLORS.map(({name, value}) => (
+                <input key={value} type="radio" name="color" style={{ background: value }}
+                    className="context-menu__option"
+                    title={name}
+                    value={value}
+                    onChange={handleColorChange}
+                    checked={selectedColor === value} />
+            ))}
             
-            <label htmlFor="colorInput">
-                Pick a color
-            </label>
-            <input type="color" id="colorInput"
-                className="context-menu__option"
+            <input type="color" ref={inputColorRef}
+                className={`context-menu__option-custom-color ${inputColorClassName}`}
                 title="Click to pick a color"
                 defaultValue="#000000"
                 disabled={!isVisible}
                 onChange={handleColorChange}
                 onClick={handleInputClick}
-                onBlur={handleCloseMenu} />
+                onBlur={ () => inputColorToggler.current = false } />
             
         </menu>
     );
