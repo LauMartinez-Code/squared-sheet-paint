@@ -16,14 +16,9 @@ const Cell = () => {
     };
 
     const handleMouseMove = (e) => {
-        if (e.buttons === 1 && !isActive) {
-            if(gridColorChanged) {
-                setCurrentColor(gridColor);
-            }
-            setIsActive(true);
-        }
-        else if (e.buttons === 1 && isActive && gridColorChanged) {
-            setCurrentColor(gridColor);
+        if (e.buttons === 1) {
+            !isActive && setIsActive(true);
+            gridColorChanged && setCurrentColor(gridColor);
         }
     }
 
